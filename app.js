@@ -1,44 +1,40 @@
 var App = React.createClass({
-    getDefaultProps:function(){
-        return {
-            txt: 'this is a default prop',
-            cat: 0
-        }
-    },
     getInitialState:function(){
         return {
-            montxt: 'the state txt',
-            id: 0
+            red: 0,
+            green: 0,
+            blue: 0
         }
     },
-    update: function(e) {
-        this.setState({montxt: e.target.value});
-    },
-    propTypes: {
-        txt: React.PropTypes.string,
-        cat: React.PropTypes.number.isRequired
+    update: function() {
+        this.setState({
+            red:this.refs.red.refs.inp.getDOMNode().value,
+            green:this.refs.green.refs.inp.getDOMNode().value,
+            blue:this.refs.blue.refs.inp.getDOMNode().value
+        });
     },
     render: function(){
-        var txt = this.props.txt;
         return (
             <div>
-                <b>{txt}</b>
-                <Widget montxt={this.state.montxt} update={this.update}/>
+                <Slider ref="red" update={this.update}/>
+                <label>{this.state.red}</label>
+                <Slider ref="green" update={this.update}/>
+                <label>{this.state.green}</label>
+                <Slider ref="blue" update={this.update}/>
+                <label>{this.state.blue}</label>
             </div>
-        )
+        );
     }
 });
 
-var Widget = React.createClass({
+var Slider = React.createClass({
     render: function(){
         return (
             <div>
-                <h1>Hello world !</h1>
-                <input type="text" onChange={this.props.update}></input>
-                <h1>{this.props.montxt}</h1>
+                <input ref="inp" type="range" min="0" max="255" onChange={this.props.update} />
             </div>
-        )
+        );
     }
-})
+});
 
-React.render(<App cat={5} txt="this is the props txt" />, document.body);
+React.render(<App />, document.body);
