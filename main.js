@@ -3,19 +3,33 @@
  */
 var App = React.createClass({
     render: function(){
-        return <Button>I <Heart /> React</Button>
+        return (
+            <div>
+                <BButton className="btn-primary">
+                    <BIcon className="glyphicon-heart"/> Button
+                </BButton>
+                <BButton className="btn-success">
+                    <BIcon className="glyphicon-pencil"/> Button
+                </BButton>
+                <BButton className="btn-danger">
+                    <BIcon className="glyphicon-inbox"/> Button
+                </BButton>
+            </div>
+        )
     }
 });
 
-var Button = React.createClass({
+var BButton = React.createClass({
     render: function(){
-        return <button>{this.props.children}</button>
+        return this.transferPropsTo(
+            <a className="btn">{this.props.children}</a>
+        )
     }
 });
 
-var Heart = React.createClass({
+var BIcon = React.createClass({
     render: function () {
-        return <span className="glyphicon glyphicon-heart"></span>
+        return this.transferPropsTo(<span className="glyphicon"></span>)
     }
 });
 
