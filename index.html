@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<script type="text/jsx">
+<!--<script type="text/jsx">
 
     var App = React.createClass({
         render: function(){
@@ -17,6 +17,16 @@
     });
 
     React.render(<App />, document.body);
+</script>-->
+
+<script>
+    var App = React.createClass({
+        render: function(){
+            return React.DOM.h1(null, "Hi there")
+        }
+    });
+
+    React.render(App(), document.body);
 </script>
 
 </body>
