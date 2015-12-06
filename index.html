@@ -5,7 +5,7 @@
     <title>React hello world</title>
     <script src="http://fb.me/react-0.12.2.js"></script>
     <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
-    <script type="text/jsx" src="./main.js"></script>
+    <script type="text/jsx" src="./app/lifecycle.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -21,7 +21,10 @@
         margin: 25px;
     }
 </style>
-
+<button onclick="render()">Render</button>
+<button onclick="unmount()">Unmount</button>
+<hr/>
+<div id="panel"></div>
 <!--<script>
     var App = React.createClass({
         render: function(){
