@@ -7,17 +7,25 @@ var App = React.createClass({
         this.setProps({val:newVal})
     },
     componentWillMount:function(){
-        console.log("here i go");
+        this.setState({m:2});
+        if(this.props.val===0){
+            this.btnStyle = {'color': 'red'}
+        }
     },
     render: function(){
         console.log("hello world");
-        return <button onClick={this.update}>{this.props.val}</button>
+        return <button
+            style={this.btnStyle}
+            onClick={this.update}>
+            {this.props.val*this.state.m}
+        </button>
     },
     componentDidMount:function(){
-        console.log("nice place you got here");
+        this.inc = setInterval(this.update, 500)
     },
     componentWillUnMout:function(){
         console.log("goodbye curl world !");
+        clearInterval(this.inc)
     }
 });
 
